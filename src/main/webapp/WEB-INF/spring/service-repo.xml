@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- <bean id="serviceRepo" class="com.pivotal.cf.broker.repo.InMemoryServiceRepo"/> -->
+    <bean id="mysqlServiceRepo" class="com.pivotal.cf.broker.repo.MysqlPersistedServiceRepo"/>
+    <bean id="mongodbServiceRepo" class="com.pivotal.cf.broker.repo.MongodbPersistedServiceRepo"/>
+    <bean id="postgresqlServiceRepo" class="com.pivotal.cf.broker.repo.PostgresqlPersistedServiceRepo"/>
+    <bean id="redisServiceRepo" class="com.pivotal.cf.broker.repo.RedisPersistedServiceRepo"/>
+    <bean id="memcachedServiceRepo" class="com.pivotal.cf.broker.repo.MemcachedPersistedServiceRepo"/> 
+
+</beans>

@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="catalog" class="com.pivotal.cf.broker.model.Catalog">
+		<constructor-arg name="serviceDefinitions" ref="serviceDefinitions" />
+	</bean>
+
+	<util:list id="serviceDefinitions">
+		<ref bean="serviceDefinition-mysql" />
+		<ref bean="serviceDefinition-mongodb" />
+		<ref bean="serviceDefinition-postgresql" />
+		<ref bean="serviceDefinition-redis" />
+		<ref bean="serviceDefinition-memcached" />
+	</util:list>
+
+	<bean id="serviceDefinition-mysql" class="com.pivotal.cf.broker.model.ServiceDefinition">
+		<constructor-arg name="id" value="mysql-docker" />
+		<constructor-arg name="name" value="Mysql-docker" />
+		<constructor-arg name="description" value="Mysql-docker Instances" />
+		<constructor-arg name="bindable" value="true" />
+		<constructor-arg name="plan_updateable" value="true" />
+		<constructor-arg name="plans" ref="plans-mysql" />
+		<property name="tags" ref="tags-mysql" />
+	</bean>
+
+	<util:list id="plans-mysql">
+		<ref bean="mysql-docker-plan-125M" />
+		<ref bean="mysql-docker-plan-250M" />
+		<ref bean="mysql-docker-plan-500M" />
+		<ref bean="mysql-docker-plan-1000M" />
+		<ref bean="mysql-docker-plan-2000M" />
+		<ref bean="mysql-docker-plan-4000M" />
+		<ref bean="mysql-docker-plan-8000M" />
+	</util:list>
+
+	<bean id="mysql-docker-plan-125M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mysql-docker-plan-125M" />
+		<constructor-arg name="name" value="MySQL Docker 125M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mysql docker 125M plan. All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.18</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>125M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+
+	</bean>
+	<bean id="mysql-docker-plan-250M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mysql-docker-plan-250M" />
+		<constructor-arg name="name" value="MySQL Docker 250M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mysql docker 250M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.36</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>250M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="mysql-docker-plan-500M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mysql-docker-plan-500M" />
+		<constructor-arg name="name" value="MySQL Docker 500M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mysql docker 500M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.72</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>500M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="mysql-docker-plan-1000M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mysql-docker-plan-1000M" />
+		<constructor-arg name="name" value="MySQL Docker 1000M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mysql docker 1000M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 1.44</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>1000M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="mysql-docker-plan-2000M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mysql-docker-plan-2000M" />
+		<constructor-arg name="name" value="MySQL Docker 2000M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mysql docker 2000M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 2.88</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>2000M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="mysql-docker-plan-4000M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mysql-docker-plan-4000M" />
+		<constructor-arg name="name" value="MySQL Docker 4000M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mysql docker 4000M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 5.76</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>4000M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="mysql-docker-plan-8000M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mysql-docker-plan-8000M" />
+		<constructor-arg name="name" value="MySQL Docker 8000M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mysql docker 8000M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 11.52</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>8000M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<util:list id="tags-mysql">
+		<value>Database</value>
+		<value>mysql-docker</value>
+	</util:list>
+
+
+	<bean id="serviceDefinition-mongodb" class="com.pivotal.cf.broker.model.ServiceDefinition">
+		<constructor-arg name="id" value="mongodb-docker" />
+		<constructor-arg name="name" value="Mongodb-docker" />
+		<constructor-arg name="description" value="Mongodb-docker Instances" />
+		<constructor-arg name="bindable" value="true" />
+		<constructor-arg name="plan_updateable" value="true" />
+
+		<constructor-arg name="plans" ref="plans-mongodb" />
+		<property name="tags" ref="tags-mongodb" />
+	</bean>
+
+	<util:list id="plans-mongodb">
+		<ref bean="mongodb-docker-plan-1G" />
+		<ref bean="mongodb-docker-plan-2G" />
+		<ref bean="mongodb-docker-plan-4G" />
+		<ref bean="mongodb-docker-plan-8G" />
+		<ref bean="mongodb-docker-plan-16G" />
+		<ref bean="mongodb-docker-plan-32G" />
+		<ref bean="mongodb-docker-plan-64G" />
+	</util:list>
+
+	<bean id="mongodb-docker-plan-1G" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mongodb-docker-plan-1G" />
+		<constructor-arg name="name" value="MongoDB Docker 1G" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mongodb docker 1G plan. All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.58</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>1G</value>
+				</entry>
+			</map>
+		</constructor-arg>
+
+	</bean>
+	<bean id="mongodb-docker-plan-2G" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mongodb-docker-plan-2G" />
+		<constructor-arg name="name" value="MongoDB Docker 2G" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mongodb docker 2G plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 1.16</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>2G</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="mongodb-docker-plan-4G" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mongodb-docker-plan-4G" />
+		<constructor-arg name="name" value="MongoDB Docker 4G" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mongodb docker 4G plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 2.32</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>4G</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="mongodb-docker-plan-8G" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mongodb-docker-plan-8G" />
+		<constructor-arg name="name" value="MongoDB Docker 8G" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mongodb docker 8G plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 4.64</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>8G</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="mongodb-docker-plan-16G" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mongodb-docker-plan-16G" />
+		<constructor-arg name="name" value="MongoDB Docker 16G" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mongodb docker 16G plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 9.28</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>16G</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="mongodb-docker-plan-32G" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mongodb-docker-plan-32G" />
+		<constructor-arg name="name" value="MongoDB Docker 32G" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mongodb docker 32G plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 18.56</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>32G</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+
+	<bean id="mongodb-docker-plan-64G" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="mongodb-docker-plan-64G" />
+		<constructor-arg name="name" value="MongoDB Docker 64G" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a mongodb docker 64G plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 37.12</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>64G</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<util:list id="tags-mongodb">
+		<value>Database</value>
+		<value>mongodb-docker</value>
+	</util:list>
+
+	<bean id="serviceDefinition-postgresql" class="com.pivotal.cf.broker.model.ServiceDefinition">
+		<constructor-arg name="id" value="postgresql-docker" />
+		<constructor-arg name="name" value="Postgresql-docker" />
+		<constructor-arg name="description" value="Postgresql-docker Instances" />
+		<constructor-arg name="bindable" value="true" />
+		<constructor-arg name="plan_updateable" value="true" />
+
+		<constructor-arg name="plans" ref="plans-postgresql" />
+		<property name="tags" ref="tags-postgresql" />
+	</bean>
+
+	<util:list id="plans-postgresql">
+		<ref bean="postgresql-docker-plan-125M" />
+		<ref bean="postgresql-docker-plan-250M" />
+		<ref bean="postgresql-docker-plan-500M" />
+		<ref bean="postgresql-docker-plan-1000M" />
+		<ref bean="postgresql-docker-plan-2000M" />
+		<ref bean="postgresql-docker-plan-4000M" />
+		<ref bean="postgresql-docker-plan-8000M" />
+	</util:list>
+
+	<bean id="postgresql-docker-plan-125M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="postgresql-docker-plan-125M" />
+		<constructor-arg name="name" value="PostgreSQL Docker 125M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a postgresql docker 125M plan. All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.18</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>125M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+
+	</bean>
+	<bean id="postgresql-docker-plan-250M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="postgresql-docker-plan-250M" />
+		<constructor-arg name="name" value="PostgreSQL Docker 250M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a postgresql docker 250M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.36</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>250M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="postgresql-docker-plan-500M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="postgresql-docker-plan-500M" />
+		<constructor-arg name="name" value="PostgreSQL Docker 500M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a postgresql docker 500M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.72</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>500M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="postgresql-docker-plan-1000M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="postgresql-docker-plan-1000M" />
+		<constructor-arg name="name" value="PostgreSQL Docker 1000M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a postgresql docker 1000M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 1.44</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>1000M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="postgresql-docker-plan-2000M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="postgresql-docker-plan-2000M" />
+		<constructor-arg name="name" value="PostgreSQL Docker 2000M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a postgresql docker 2000M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 2.88</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>2000M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="postgresql-docker-plan-4000M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="postgresql-docker-plan-4000M" />
+		<constructor-arg name="name" value="PostgreSQL Docker 4000M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a postgresql docker 4000M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 5.76</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>4000M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+
+	<bean id="postgresql-docker-plan-8000M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="postgresql-docker-plan-8000M" />
+		<constructor-arg name="name" value="PostgreSQL Docker 8000M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a postgresql docker 8000M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 11.52</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>8000M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+
+	<util:list id="tags-postgresql">
+		<value>Database</value>
+		<value>postgresql-docker</value>
+	</util:list>
+
+	<bean id="serviceDefinition-redis" class="com.pivotal.cf.broker.model.ServiceDefinition">
+		<constructor-arg name="id" value="redis-docker" />
+		<constructor-arg name="name" value="Redis-docker" />
+		<constructor-arg name="description" value="Redis-docker Instances" />
+		<constructor-arg name="bindable" value="true" />
+		<constructor-arg name="plan_updateable" value="true" />
+
+		<constructor-arg name="plans" ref="plans-redis" />
+		<property name="tags" ref="tags-redis" />
+	</bean>
+
+	<util:list id="plans-redis">
+		<ref bean="redis-docker-plan-125M" />
+		<ref bean="redis-docker-plan-250M" />
+	</util:list>
+
+	<bean id="redis-docker-plan-125M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="redis-docker-plan-125M" />
+		<constructor-arg name="name" value="Redis Docker 125M" />
+		<constructor-arg name="free" value="true" />
+		<constructor-arg name="description"
+			value="This is a redis docker 125M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.25</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>125M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+
+	</bean>
+	<bean id="redis-docker-plan-250M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="redis-docker-plan-250M" />
+		<constructor-arg name="name" value="Redis Docker 250M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a redis docker 250M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.5</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>250M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<util:list id="tags-redis">
+		<value>Cache</value>
+		<value>redis-docker</value>
+	</util:list>
+
+	<bean id="serviceDefinition-memcached" class="com.pivotal.cf.broker.model.ServiceDefinition">
+		<constructor-arg name="id" value="memcached-docker" />
+		<constructor-arg name="name" value="Memcached-docker" />
+		<constructor-arg name="description" value="Memcached-docker Instances" />
+		<constructor-arg name="bindable" value="true" />
+		<constructor-arg name="plan_updateable" value="true" />
+
+		<constructor-arg name="plans" ref="plans-memcached" />
+		<property name="tags" ref="tags-memcached" />
+	</bean>
+
+	<util:list id="plans-memcached">
+		<ref bean="memcached-docker-plan-125M" />
+		<ref bean="memcached-docker-plan-250M" />
+	</util:list>
+
+	<bean id="memcached-docker-plan-125M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="memcached-docker-plan-125M" />
+		<constructor-arg name="name" value="Memcached Docker 125M" />
+		<constructor-arg name="free" value="true" />
+		<constructor-arg name="description"
+			value="This is a memcached docker 125M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.25</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>125M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+
+	</bean>
+	<bean id="memcached-docker-plan-250M" class="com.pivotal.cf.broker.model.Plan">
+		<constructor-arg name="id" value="memcached-docker-plan-250M" />
+		<constructor-arg name="name" value="Memcached Docker 250M" />
+		<constructor-arg name="free" value="false" />
+		<constructor-arg name="description"
+			value="This is a memcached docker 250M plan.  All services are created equally." />
+		<constructor-arg name="metadata">
+			<map>
+				<entry>
+					<key>
+						<value>amount</value>
+					</key>
+					<value>RMB 0.5</value>
+				</entry>
+				<entry>
+					<key>
+						<value>unit</value>
+					</key>
+					<value>DAILY</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bullets</value>
+					</key>
+					<value>250M</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<util:list id="tags-memcached">
+		<value>Cache</value>
+		<value>memcached-docker</value>
+	</util:list>
+
+
+</beans>
